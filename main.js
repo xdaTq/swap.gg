@@ -40,6 +40,9 @@ Client.on('message', message => {
     if (command === 'api') {
         Client.commands.get('api').run(message, args)
     }
+    if (command === 'market') {
+        Client.commands.get('market').run(message, args)
+    }
 });
 
 Client.login(config.token);

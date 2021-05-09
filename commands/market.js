@@ -3,15 +3,17 @@ const axios = require('axios');
 const config = require('../config.json')
 
 module.exports = {
-    name: 'api',
+    name: 'market',
     run: async (message, args) => {
 
         const api = 'https://market-api.swap.gg/v1'
 
         let url, response, swapgg;
 
+        //rust item appid=252490
+
         try {
-            url = `${api}/user/me`
+            url = `${api}/pricing/lowest?appId=252490`
             response = await axios.get(url, {
                 headers: {
                     'Authorization': `${config.apiKey}`
@@ -22,22 +24,14 @@ module.exports = {
             return message.channel.send(`***${args[0]}*** doesn't exist, or data isn't being collected`), console.log(error)
         }
 
+
         console.log(swapgg.result)
 
         const swapggembed = new discord.MessageEmbed()
             .setTitle('Swap.gg')
-            .setThumbnail(swapgg.result.avatar)
-            .addFields(
-            {
-                name: 'Name: ',
-                value: swapgg.result.username
-            },
-            {
-                name: 'UserId: ',
-                value: swapgg.result.userId
-            }
-            )
+            .addField(swapgg.result)
 
         message.channel.send(swapggembed)
+
     }
 };
