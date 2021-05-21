@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 const axios = require('axios');
-const config = require('../config.json')
+const fs = require('fs');
+const config = require('../config.json');
 
 module.exports = {
     name: 'market',
@@ -24,12 +25,14 @@ module.exports = {
             return message.channel.send(`***${args[0]}*** doesn't exist, or data isn't being collected`), console.log(error)
         }
 
-
-        console.log(swapgg.result)
+        let data = []
+        data.push(swapgg.result)
+        
+        console.log(data)
 
         const swapggembed = new discord.MessageEmbed()
             .setTitle('Swap.gg')
-            .addField(swapgg.result)
+            // .addField(JSON.stringify([swapgg.result]))
 
         message.channel.send(swapggembed)
 

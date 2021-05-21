@@ -35,6 +35,11 @@ module.exports = {
             {
                 name: 'UserId: ',
                 value: swapgg.result.userId
+            },
+            {
+                name: 'Platform: ',
+                //value: swapgg.result.platform.steam.steamId,
+                value: swapgg.result.platform.steam.tradeLink
             }
             )
 
