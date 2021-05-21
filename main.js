@@ -43,6 +43,9 @@ Client.on('message', message => {
     if (command === 'market') {
         Client.commands.get('market').run(message, args)
     }
+    if (command === 'cart') {
+        Client.commands.get('cart').run(message, args)
+    }
 });
 
 Client.login(config.token);
