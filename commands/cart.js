@@ -23,27 +23,43 @@ module.exports = {
             console.log(error)
         }
 
-        console.log(swapgg.result)
+        let items = swapgg.result.items
+        console.log(items)
 
-        const swapggembed = new discord.MessageEmbed()
-            .setTitle('Swap.gg')
-            .setColor(0x15CCB5)
-            .addFields(
-            {
-                name: 'Item Name: ',
-                value: JSON.stringify([swapgg.result.items.marketName])
-            },
-            {
-                name: 'Item Image: ',
-                value: JSON.stringify([swapgg.result.items.image])
-            },
-            {
-                name: 'Item Price: ',
-                value: JSON.stringify([swapgg.result.items.price])
-            }
-            )
+        for (let i = 0; i < items.length; i++) {
+            let current = items[i];
 
-        message.channel.send(swapggembed)
+            const swapggembed = new discord.MessageEmbed()
+                .setTitle('Swap.gg')
+                .setColor(0x15CCB5)
+                .addFields(
+                {
+                    name: 'Item Name: ',
+                    value: current.marketName
+                },
+                {
+                    name: 'Item type: ',
+                    value: current.meta.TYPE
+                },
+                {
+                    name: 'Item Category: ',
+                    value: current.meta.CATEGORY
+                },
+                {
+                    name: 'Item Price: ',
+                    value: current.sale.price
+                },
+                {
+                    name: 'Steam Price: ',
+                    value: current.prices.steam
+                }
+                )
+    
+            message.channel.send(swapggembed)
+            
+            
+        }
+
 
     }
 }
