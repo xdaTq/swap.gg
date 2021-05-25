@@ -9,7 +9,6 @@ module.exports = {
         const api = 'https://market-api.swap.gg/v1'
 
         let url, response, swapgg;
-        let urlUserBalance, responseUserBalance, swapggUserBalance;
 
         try {
             url = `${api}/user/me`
