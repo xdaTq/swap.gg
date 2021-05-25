@@ -1,17 +1,15 @@
 const Discord = require('discord.js');
 const Client = new Discord.Client();
-const axios = require('axios');
 const config = require('./config.json');
 
 const fs = require('fs');
-const { type } = require('os');
 
 var version = `${config.version}`;
 var prefix = `${config.prefix}`;
 
 Client.commands = new Discord.Collection();
 
-// Command-Handler
+// Command Handler to import commands 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
@@ -19,6 +17,7 @@ for (const file of commandFiles) {
     Client.commands.set(command.name, command);
 }
 
+// BOT activity preccence
 Client.on('ready', (message) => {
     console.log(`BOT#1 | Connected as : ${Client.user.tag}`, ` | `, `version : ${version}`)
 
@@ -27,6 +26,7 @@ Client.on('ready', (message) => {
     }).catch(console.error)
 });
 
+// Command run
 Client.on('message', message => {
 
     if (!message.content.startsWith(prefix) || message.authtor) return;
@@ -48,4 +48,5 @@ Client.on('message', message => {
     }
 });
 
+// To login the client.
 Client.login(config.token);
