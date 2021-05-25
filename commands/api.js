@@ -3,7 +3,7 @@ const axios = require('axios');
 const config = require('../config.json')
 
 module.exports = {
-    name: 'api',
+    name: 'profile',
     run: async (message, args) => {
 
         const api = 'https://market-api.swap.gg/v1'
