@@ -1,6 +1,5 @@
 const discord = require('discord.js');
 const axios = require('axios');
-const fs = require('fs');
 const config = require('../config.json');
 
 module.exports = {
@@ -33,7 +32,6 @@ module.exports = {
         const swapggembed = new discord.MessageEmbed()
             .setTitle('Swap.gg')
             .setColor(0x15CCB5)
-            // .addField(JSON.stringify([swapgg.result]))
 
         message.channel.send(swapggembed)
 
