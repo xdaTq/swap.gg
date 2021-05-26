@@ -27,8 +27,18 @@ module.exports = {
         console.log(items)
 
         for (let i = 0; i < items.length; i++) {
-            let current = items[i];
 
+            let current = items[i];
+            let newPrice = `${current.sale.price}`
+
+            console.log(newPrice)
+
+            if (newPrice.length < 4) {
+                
+            }
+
+            console.log(newPrice)
+            
             const swapggembed = new discord.MessageEmbed()
                 .setTitle('Swap.gg')
                 .setColor(0x15CCB5)
@@ -47,11 +57,11 @@ module.exports = {
                 },
                 {
                     name: 'Item Price: ',
-                    value: current.sale.price
+                    value: `${current.sale.price}$`
                 },
                 {
                     name: 'Steam Price: ',
-                    value: current.prices.steam
+                    value: `${current.prices.steam}$`
                 }
                 )
     
