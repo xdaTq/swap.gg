@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 const axios = require('axios');
 const config = require('../config.json');
+const { chownSync } = require('fs');
 
 module.exports = {
     name: 'cart',
@@ -29,15 +30,20 @@ module.exports = {
         for (let i = 0; i < items.length; i++) {
 
             let current = items[i];
-            let newPrice = `${current.sale.price}`
+            let oldPrice = current.sale.price
+            let comaprePrice = 10000
+            let old = oldPrice.toString();
+    
+            if (oldPrice >= comaprePrice) {
+                let newPrice = old.slice(',', 3);
 
-            console.log(newPrice)
+            } else if (oldPrice <= comaprePrice) {
+                let newPrice2 = old.slice(',', 2);
 
-            if (newPrice.length < 4) {
-                
             }
 
-            console.log(newPrice)
+
+            console.log(testfunc)
             
             const swapggembed = new discord.MessageEmbed()
                 .setTitle('Swap.gg')
