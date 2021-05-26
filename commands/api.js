@@ -1,6 +1,6 @@
 const discord = require('discord.js');
 const axios = require('axios');
-const config = require('../config.json')
+const config = require('../config.json');
 
 module.exports = {
     name: 'profile',
