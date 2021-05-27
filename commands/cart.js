@@ -27,50 +27,57 @@ module.exports = {
         }
 
         let items = swapgg.result.items
-        // console.log(items)
 
-        for (let i = 0; i < items.length; i++) {
+        if (swapgg.result.items === null || swapgg.result.items === undefined || swapgg.result.items === '' || swapgg.result.items.length === 0) {
 
-            let current = items[i];
-            let oldPrice = current.sale.price
-            let old = oldPrice.toString();
-            let comaprePrice = 10000
-
-            if (oldPrice >= comaprePrice) {
-                let Testprice = `${old.substring(0, 3)},${old.substring(3, 5)}$`
-
-                console.log(Testprice)
-            } else if (oldPrice < comaprePrice) {
-                let Testprice1 = `${old.substring(0, 3)},${old.substring(3, 5)}$`
-
-                console.log(Testprice1);
-            }
-
-            const swapggembed = new discord.MessageEmbed()
-                .setTitle('Swap.gg')
+            const errorembed = new discord.MessageEmbed()
+                .setTitle('Your cart is empty!')
                 .setColor(0x15CCB5)
-                .addFields({
-                    name: 'Item Name: ',
-                    value: current.marketName
-                }, {
-                    name: 'Item type: ',
-                    value: current.meta.TYPE
-                }, {
-                    name: 'Item Category: ',
-                    value: current.meta.CATEGORY
-                }, {
-                    name: 'Item Price: ',
-                    value: `${current.sale.price}$`
-                }, {
-                    name: 'Steam Price: ',
-                    value: `${current.prices.steam}$`
-                })
 
-            message.channel.send(swapggembed)
+            message.channel.send(errorembed)
 
+        } else {
 
+            for (let i = 0; i < items.length; i++) {
+
+                let current = items[i];
+                let oldPrice = current.sale.price
+                let old = oldPrice.toString();
+                let comaprePrice = 10000
+
+                if (oldPrice >= comaprePrice) {
+                    let Testprice = `${old.substring(0, 3)},${old.substring(3, 5)}$`
+
+                    console.log(Testprice)
+                } else if (oldPrice < comaprePrice) {
+                    let Testprice1 = `${old.substring(0, 3)},${old.substring(3, 5)}$`
+
+                    console.log(Testprice1);
+                }
+
+                const swapggembed = new discord.MessageEmbed()
+                    .setTitle('Swap.gg')
+                    .setColor(0x15CCB5)
+                    .addFields({
+                        name: 'Item Name: ',
+                        value: current.marketName
+                    }, {
+                        name: 'Item type: ',
+                        value: current.meta.TYPE
+                    }, {
+                        name: 'Item Category: ',
+                        value: current.meta.CATEGORY
+                    }, {
+                        name: 'Item Price: ',
+                        value: `${current.sale.price}$`
+                    }, {
+                        name: 'Steam Price: ',
+                        value: `${current.prices.steam}$`
+                    })
+
+                message.channel.send(swapggembed)
+
+            }
         }
-
-
     }
 }
