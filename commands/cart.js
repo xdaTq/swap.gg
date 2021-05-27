@@ -31,7 +31,7 @@ module.exports = {
         if (swapgg.result.items === null || swapgg.result.items === undefined || swapgg.result.items === '' || swapgg.result.items.length === 0) {
 
             const errorembed = new discord.MessageEmbed()
-                .setTitle('Your cart is empty!')
+                .setTitle('Your cart is empty.')
                 .setColor(0x15CCB5)
 
             message.channel.send(errorembed)
@@ -41,18 +41,18 @@ module.exports = {
             for (let i = 0; i < items.length; i++) {
 
                 let current = items[i];
-                let oldPrice = current.sale.price
-                let old = oldPrice.toString();
+                let currentPrice = current.sale.price
+                let currentPriceToStr = currentPrice.toString();
                 let comaprePrice = 10000
 
-                if (oldPrice >= comaprePrice) {
-                    let Testprice = `${old.substring(0, 3)},${old.substring(3, 5)}$`
+                if (currentPrice >= comaprePrice) {
+                    let newPrice = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
 
-                    console.log(Testprice)
-                } else if (oldPrice < comaprePrice) {
-                    let Testprice1 = `${old.substring(0, 3)},${old.substring(3, 5)}$`
+                    console.log(newPrice)
+                } else if (currentPrice < comaprePrice) {
+                    let newPrice1 = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
 
-                    console.log(Testprice1);
+                    console.log(newPrice1);
                 }
 
                 const swapggembed = new discord.MessageEmbed()
