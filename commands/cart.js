@@ -45,12 +45,15 @@ module.exports = {
                 let currentPriceToStr = currentPrice.toString();
                 let comaprePrice = 10000
 
+                let newPrice
+                let newPrice1
+                
                 if (currentPrice >= comaprePrice) {
-                    let newPrice = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
+                    newPrice = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
 
                     console.log(newPrice)
                 } else if (currentPrice < comaprePrice) {
-                    let newPrice1 = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
+                    newPrice1 = `${currentPriceToStr.substring(0, 2)},${currentPriceToStr.substring(2, 5)}$`
 
                     console.log(newPrice1);
                 }
@@ -69,7 +72,7 @@ module.exports = {
                         value: current.meta.CATEGORY
                     }, {
                         name: 'Item Price: ',
-                        value: `${current.sale.price}$`
+                        value: `${newPrice}`
                     }, {
                         name: 'Steam Price: ',
                         value: `${current.prices.steam}$`
