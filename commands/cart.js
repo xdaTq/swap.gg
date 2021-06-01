@@ -41,21 +41,36 @@ module.exports = {
             for (let i = 0; i < items.length; i++) {
 
                 let current = items[i];
+
                 let currentPrice = current.sale.price
+                let currentSteamPrice = current.prices.steam
+
                 let currentPriceToStr = currentPrice.toString();
+                let currentSteamPriceToStr = currentSteamPrice.toString();
+
                 let comaprePrice = 10000
 
                 let newPrice
-                let newPrice1
-                
+                let newSteamPrice
+
                 if (currentPrice >= comaprePrice) {
                     newPrice = `${currentPriceToStr.substring(0, 3)},${currentPriceToStr.substring(3, 5)}$`
 
                     console.log(newPrice)
                 } else if (currentPrice < comaprePrice) {
-                    newPrice1 = `${currentPriceToStr.substring(0, 2)},${currentPriceToStr.substring(2, 5)}$`
+                    newPrice = `${currentPriceToStr.substring(0, 2)},${currentPriceToStr.substring(2, 5)}$`
 
-                    console.log(newPrice1);
+                    console.log(newPrice);
+                }
+
+                if (currentSteamPrice >= comaprePrice) {
+                    newSteamPrice = `${currentSteamPriceToStr.substring(0, 2)},${currentSteamPriceToStr.substring(2, 5)}`
+
+                    console.log(newSteamPrice);
+                } else if (currentSteamPrice < comaprePrice) {
+                    newSteamPrice = `${currentSteamPriceToStr.substring(0, 2)},${currentSteamPriceToStr.substring(2, 5)}`
+
+                    console.log(newSteamPrice);
                 }
 
                 const swapggembed = new discord.MessageEmbed()
@@ -75,7 +90,7 @@ module.exports = {
                         value: `${newPrice}`
                     }, {
                         name: 'Steam Price: ',
-                        value: `${current.prices.steam}$`
+                        value: `${newSteamPrice}$`
                     })
 
                 message.channel.send(swapggembed)
