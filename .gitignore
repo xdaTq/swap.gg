@@ -1,4 +1,5 @@
-config.json
-version.js
+/config.json
+/version.js
+# dependencies
 /node_modules
 #
