@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const config = require('./config.json');
 const fs = require('fs');
 
+// needs to be updated to the new discord.js version!
 const Client = new Discord.Client();
 
 var version = `${config.version}`;
